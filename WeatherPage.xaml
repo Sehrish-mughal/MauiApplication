@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.WeatherPage"
+             xmlns:viewmodel="clr-namespace:MauiApp1.ViewModel"
+             x:DataType="viewmodel:WeatherViewModel"
+             Title="WeatherPage">
+    
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label Text=" Welcome to the Weather Page!   " 
+           FontSize="24" 
+           HorizontalOptions="Center" 
+           VerticalOptions="CenterAndExpand" 
+           BackgroundColor="LightSkyBlue"/>
+
+        <Image Source="weather_img.png" 
+           HorizontalOptions="Center" 
+           VerticalOptions="Start" 
+           HeightRequest="200" />
+
+        
+        <Entry x:Name="CityEntry" Placeholder="Enter city name" 
+           FontSize="18" 
+           BackgroundColor="WhiteSmoke" 
+           TextColor="Black" 
+           HorizontalOptions="FillAndExpand" />
+
+        
+        <Button Text="Get Weather"
+            FontSize="18"
+            BackgroundColor="LightSkyBlue"
+            TextColor="White"
+            Clicked="OnGetWeatherClicked" 
+            HorizontalOptions="FillAndExpand"/>
+
+        
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="CenterAndExpand">
+
+           
+            <Frame BackgroundColor="LightBlue" Padding="15" CornerRadius="12"  HeightRequest="100">
+                <Label x:Name="CityLabel" Text="City" FontSize="18" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center"  />
+            </Frame>
+
+            
+            <Frame BackgroundColor="LightCoral" Padding="15" CornerRadius="12"  HeightRequest="100">
+                <Label x:Name="TempLabel" Text="Temp" FontSize="18" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+
+            
+            <Frame BackgroundColor="LightGreen" Padding="20" CornerRadius="12"  HeightRequest="100">
+                <Label x:Name="HumidityLabel" Text="Humidity" FontSize="18" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+
+        </HorizontalStackLayout>
+        
+        <Button Text="Go Back"
+        Command="{Binding GoBackCommand}"/>
+        
+    </VerticalStackLayout>
+</ContentPage>

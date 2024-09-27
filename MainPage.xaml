@@ -10,11 +10,22 @@
           Padding="10"
           RowSpacing="10"
           ColumnSpacing="10">
+       
         
         <Image Grid.ColumnSpan="2"
                Source="dotnet_bot.png"
-               BackgroundColor="Orange"
+               BackgroundColor="SkyBlue"
                />
+        
+        <Button Text="Go to Weather Page"
+                FontSize="18"
+                BackgroundColor="Purple"
+                TextColor="White"
+                Clicked="OnNavigateToWeatherPageClicked"
+                HorizontalOptions="FillAndExpand"
+                Grid.Row="0"
+                Grid.Column="1"/>
+
         <Entry Placeholder="Enter task"
                Text="{Binding Text}"
                Grid.Row="1"/>
@@ -23,7 +34,7 @@
                 Grid.Row="1"
                 Grid.Column="1"/>
 
-        <CollectionView Grid.Row="2" Grid.ColumnSpan="2"
+        <CollectionView Grid.Row="3" Grid.ColumnSpan="2"
                         ItemsSource="{Binding Items}"
                         SelectionMode="None">
             <CollectionView.ItemTemplate>
@@ -38,14 +49,15 @@
                             </SwipeItems>
 
                         </SwipeView.RightItems>
-                        <Grid Padding="0,5">
-                            <Frame>
+                        <Grid Padding="0,5" >
+                            <Frame BackgroundColor="LightGrey">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=TapCommand}"
                                                            CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="{Binding .}"
-                                       FontSize="24"/>
+                                       FontSize="24"
+                                      />
                             </Frame>
                         </Grid>
                     </SwipeView>

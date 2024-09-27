@@ -12,7 +12,11 @@ namespace MauiApp1
             BindingContext = vm;
         }
 
-      
+        private async void OnNavigateToWeatherPageClicked(object sender, EventArgs e)
+        {
+            
+            await Navigation.PushAsync(new WeatherPage());
+        }
     }
 
 }
