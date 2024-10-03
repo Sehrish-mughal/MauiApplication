@@ -47,5 +47,11 @@ namespace MauiApp1.ViewModel
         {
             await Shell.Current.GoToAsync($"{nameof(DetailsPage)}?Text={s}");
         }
+
+        [RelayCommand]
+        async Task Tapto(string s)
+        {
+            await Shell.Current.GoToAsync($"{nameof(WeatherPage)}?Text={s}");
+        }
     }
 }

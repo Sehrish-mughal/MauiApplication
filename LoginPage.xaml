@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.LoginPage"
+             Title="LoginPage">
+
+    <ScrollView>
+
+        <Grid
+          ColumnDefinitions="10*, 80*,10*">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+
+            <BoxView Color="DarkBlue"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="3" 
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"/>
+
+            <BoxView Color="DarkBlue"
+                 Grid.Row="1"
+                 Grid.ColumnSpan="3" />
+
+            <BoxView Color="DarkBlue"
+                 Grid.Row="2"
+                 Grid.ColumnSpan="3" />
+
+            <BoxView Color="White"
+                 Grid.Row="3"
+                 Grid.ColumnSpan="3" />
+
+            <Image Source="footer_img.png"
+               Grid.Row="4"
+               Grid.ColumnSpan="3"
+               Grid.RowSpan="2"
+               
+               />
+
+            <Grid 
+              Grid.Row="1"
+              Grid.Column="1"
+              Grid.RowSpan="4">
+
+                <VerticalStackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Grid.Column="1"
+                                 Grid.Row="1"
+                                 WidthRequest="700">
+
+
+                    <Frame BackgroundColor="White"
+                       CornerRadius="15"
+                       Padding="20"
+                       HasShadow="True"
+                       WidthRequest="450"
+                       HeightRequest="650"
+                       BorderColor="Black"
+                       Grid.RowSpan="4">
+
+
+                        <VerticalStackLayout Spacing="20">
+
+                            <Image Source="img_login.png"
+                               Aspect="AspectFit"
+                               HeightRequest="200"
+                               WidthRequest="400"/>
+
+                            <Label Text="Login to your Application"
+                               FontSize="24"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               TextColor="Black"/>
+
+                            <Label Text="   Username"
+                               FontSize="18"
+                               TextColor="Black"
+                               HorizontalOptions="StartAndExpand"
+                               Padding="30,3,3,0"/>
+
+
+                            <Entry Placeholder="Enter Username"
+                               x:Name="usernameEntry"
+                               TextColor="Black"
+                               FontSize="18"
+                               HorizontalOptions="FillAndExpand"
+                               WidthRequest="300"/>
+
+
+                            <Label Text="   Password"
+                               FontSize="18"
+                               TextColor="Black"
+                               HorizontalOptions="Start"
+                               Padding="30,3,3,0"/>
+
+
+                            <Entry Placeholder="Enter Password"
+                               x:Name="passwordEntry"
+                               IsPassword="True"
+                               TextColor="Black"
+                               FontSize="18"
+                               HorizontalOptions="FillAndExpand"
+                               WidthRequest="300"/>
+
+
+                            <Button Text="Login"
+                                FontSize="20"
+                                BackgroundColor="DarkBlue"
+                                TextColor="White"
+                                HorizontalOptions="Center"
+                                WidthRequest="300"/>
+
+                        </VerticalStackLayout>
+                    </Frame>
+
+                </VerticalStackLayout>
+            </Grid>
+
+        </Grid>
+
+    </ScrollView>
+
+
+</ContentPage>

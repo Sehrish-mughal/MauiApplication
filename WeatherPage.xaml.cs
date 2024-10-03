@@ -5,16 +5,22 @@ using System.Threading.Tasks;
 using MauiApp1.Models;
 using MauiApp1.ViewModel;
 using Microsoft.Maui.Controls;
+using YourAppNamespace.Services;
 
 public partial class WeatherPage : ContentPage
 {
 
     readonly string _apiKey = "a6500206369f3dbfa456e6a456c9c9a3";
     readonly string _baseUrl = "https://api.openweathermap.org/data/2.5/weather";
+    public static TodoDatabase _database { get; private set; }
+
 
     public WeatherPage()
     {
         InitializeComponent();
+        BindingContext = new WeatherViewModel();
+        string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WeatherData1.db");
+        _database = new TodoDatabase(dbPath);
     }
 
     public async Task<WeatherResponse> GetWeatherDataAsync(string city)
@@ -61,6 +67,18 @@ public partial class WeatherPage : ContentPage
 
         if (!string.IsNullOrEmpty(city))
         {
+            var dbAllWeather = await _database.GetWeatherDatasAsync();
+            var dbweather = dbAllWeather.FirstOrDefault(x => x.City.Equals(city, StringComparison.CurrentCultureIgnoreCase));
+
+
+            if (dbweather != null)
+            {
+                CityLabel.Text = "city:" + dbweather.City;
+                TempLabel.Text = "temp:" + dbweather.Temp.ToString();
+                HumidityLabel.Text = "humidity:" + dbweather.Humidity.ToString();
+                return;
+            }
+
 
             WeatherResponse weather = await GetWeatherDataAsync(city);
 
@@ -70,6 +88,19 @@ public partial class WeatherPage : ContentPage
                 CityLabel.Text = $"City: {weather.Name}";
                 TempLabel.Text = $"Temp: {weather.main.Temp}°C";
                 HumidityLabel.Text = $"Humidity: {weather.main.Humidity}%";
+
+                var weatherData = new WeatherData
+                {
+                    Id = dbAllWeather.Count + 1,
+                    City = weather.Name,
+                    Temp = weather.main.Temp,
+                    Humidity = weather.main.Humidity
+                };
+
+                // Save weather data to SQLite
+                await App.Database.AddWeatherDataAsync(weatherData);
+                await _database.SaveWeatherDataAsync(weatherData);
+
             }
             else
             {
@@ -90,8 +121,3 @@ public partial class WeatherPage : ContentPage
 
 }
 
-public class Main
-{
-    public float Temp { get; set; }
-    public float Humidity { get; set; }
-}

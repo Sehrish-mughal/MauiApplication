@@ -8,12 +8,14 @@
              
              >
 
-    <VerticalStackLayout Padding="20">
+    <VerticalStackLayout Padding="20"
+                         Spacing="20">
         <Label BackgroundColor="LightGrey"
             Text="{Binding Text}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" 
             FontSize="30"/>
+        
         <Button Text="Go Back"
                 Command="{Binding GoBackCommand}"/>
     </VerticalStackLayout>

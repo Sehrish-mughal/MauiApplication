@@ -23,6 +23,9 @@ namespace MauiApp1
             builder.Services.AddTransient<DetailsPage>();
             builder.Services.AddTransient<DetailsViewModel>();
 
+            builder.Services.AddTransient<WeatherPage>();
+            builder.Services.AddTransient<WeatherViewModel>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

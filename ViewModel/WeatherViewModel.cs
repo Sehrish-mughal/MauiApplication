@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace MauiApp1.ViewModel
 {
+    [QueryProperty("Text", "Text")]
     public partial class WeatherViewModel : ObservableObject
     {
+        [ObservableProperty]
+        string text;
+
         [RelayCommand]
         async Task GoBack()
         {
